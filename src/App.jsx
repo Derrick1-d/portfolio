@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import PortfolioWorks from "./components/Portfolioworks";
+import PortfolioWorks from "./components/PortfolioWorks";
 import Experience from "./components/Experience";
 import ProfilePage from "./components/ProfilePage";
 import Footer from "./components/Footer";
