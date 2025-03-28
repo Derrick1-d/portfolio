@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
-import { motion } from "framer-motion";
+import { FiMenu, FiX, FiMail, FiHome, FiUser, FiBriefcase, FiFolder, FiBook } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar({ scrollToSection, refs }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,74 +13,154 @@ function Navbar({ scrollToSection, refs }) {
         setMenuOpen(false);
       }
     }
+    
     if (menuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
     }
+    
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menuOpen]);
 
-  return (
-    <nav className="w-full bg-white fixed shadow-md rounded-xl mt-2 px-6 py-4 flex items-center justify-between z-50">
-      <div className="container mx-auto px-4 md:px-8 flex justify-between items-center relative">
-        
-        {/* Logo */}
-        <img src="/assets/boy.png" alt="Profile" className="w-10 h-10 rounded-full" />
+  const navItems = [
+    { 
+      label: "Home", 
+      icon: <FiHome />, 
+      ref: refs.heroRef 
+    },
+    { 
+      label: "About Me", 
+      icon: <FiUser />, 
+      ref: refs.aboutRef 
+    },
+    { 
+      label: "Portfolio", 
+      icon: <FiFolder />, 
+      ref: refs.portfolioRef 
+    },
+    { 
+      label: "Experience", 
+      icon: <FiBriefcase />, 
+      ref: refs.experienceRef 
+    },
+    { 
+      label: "Profile", 
+      icon: <FiBook />, 
+      ref: refs.profileRef 
+    }
+  ];
 
-        {/* Hire Me Button (Centered in Mobile) */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 md:hidden">
-           <a href="mailto:derricktabiri046@gmail.com" className="bg-black text-white px-4 py-2 rounded-lg">
-              Hire Me
-           </a>
+  const handleNavClick = (ref) => {
+    scrollToSection(ref);
+    setMenuOpen(false);
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center space-x-3">
+          <img 
+            src="/assets/boy.png" 
+            alt="Profile" 
+            className="w-10 h-10 rounded-full object-cover border-2 border-gray-200"
+          />
+          <span className="font-bold text-lg text-gray-800 hidden md:block">
+            Derrick Tabiri
+          </span>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          <button onClick={() => scrollToSection(refs.heroRef)} className="hover:text-gray-700">Home</button>
-          <button onClick={() => scrollToSection(refs.aboutRef)} className="hover:text-gray-700">About Me</button>
-          <button onClick={() => scrollToSection(refs.portfolioRef)} className="hover:text-gray-700">Portfolio</button>
-          <button onClick={() => scrollToSection(refs.experienceRef)} className="hover:text-gray-700">Experience</button>
-          <button onClick={() => scrollToSection(refs.profileRef)} className="hover:text-gray-700">Profile</button>
+        <div className="hidden md:flex items-center space-x-6">
+          {navItems.map((item, index) => (
+            <motion.button 
+              key={index}
+              onClick={() => handleNavClick(item.ref)}
+              className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {item.icon}
+              <span>{item.label}</span>
+            </motion.button>
+          ))}
+
+          {/* Hire Me Button (Desktop) */}
+          <motion.a 
+            href="mailto:derricktabiri046@gmail.com"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FiMail />
+            <span>Hire Me</span>
+          </motion.a>
         </div>
 
-        {/* Hire Me Button (Desktop) */}
-        <div className="hidden md:flex">
-            <a href="mailto:your-email@gmail.com" className="bg-black text-white px-4 py-2 rounded-lg">
-              Hire Me
-          </a>
+        {/* Mobile Menu Toggle */}
+        <div className="md:hidden">
+          <motion.button 
+            onClick={() => setMenuOpen(!menuOpen)}
+            whileTap={{ scale: 0.9 }}
+          >
+            {menuOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
+          </motion.button>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
-        </button>
       </div>
 
-      {/* Mobile Navigation Menu (Animated) */}
-      <motion.div
-        ref={menuRef}
-        initial={{ x: "100%" }}
-        animate={{ x: menuOpen ? 0 : "100%" }}
-        transition={{ duration: 0.3 }}
-        className={`fixed top-0 right-0 h-full w-2/3 bg-white shadow-lg flex flex-col items-center pt-20 space-y-4 
-        md:hidden ${menuOpen ? "flex" : "hidden"}`}
-      >
-        {/* Close Button for Mobile */}
-        <button className="absolute top-4 right-4" onClick={() => setMenuOpen(false)}>
-          <FiX className="text-3xl text-gray-700" />
-        </button>
+      {/* Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            ref={menuRef}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween" }}
+            className="fixed top-0 right-0 w-64 h-full bg-white shadow-2xl z-50 md:hidden"
+          >
+            <div className="p-6">
+              {/* Close Button */}
+              <motion.button 
+                onClick={() => setMenuOpen(false)}
+                className="absolute top-4 right-4"
+                whileTap={{ scale: 0.9 }}
+              >
+                <FiX className="text-2xl text-gray-600" />
+              </motion.button>
 
-        {/* Mobile Links with Smooth Scrolling */}
-        <button onClick={() => { scrollToSection(refs.heroRef); setMenuOpen(false); }} className="py-2">Home</button>
-        <button onClick={() => { scrollToSection(refs.aboutRef); setMenuOpen(false); }} className="py-2">About Me</button>
-        <button onClick={() => { scrollToSection(refs.portfolioRef); setMenuOpen(false); }} className="py-2">Portfolio</button>
-        <button onClick={() => { scrollToSection(refs.experienceRef); setMenuOpen(false); }} className="py-2">Experience</button>
-        <button onClick={() => { scrollToSection(refs.profileRef); setMenuOpen(false); }} className="py-2">Profile</button>
+              {/* Mobile Navigation Links */}
+              <div className="flex flex-col space-y-4 mt-12">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => handleNavClick(item.ref)}
+                    className="flex items-center space-x-3 text-gray-700 py-3 px-4 rounded-lg hover:bg-blue-50 transition-colors"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </motion.button>
+                ))}
 
-        {/* Hire Me Button (Inside Mobile Menu) */}
-        <button className="bg-black text-white px-4 py-2 rounded-lg mt-4">Hire Me</button>
-      </motion.div>
+                {/* Hire Me Button (Mobile) */}
+                <motion.a
+                  href="mailto:derricktabiri046@gmail.com"
+                  className="bg-blue-600 text-white px-4 py-3 rounded-lg flex items-center justify-center space-x-2 mt-4"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FiMail />
+                  <span>Hire Me</span>
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

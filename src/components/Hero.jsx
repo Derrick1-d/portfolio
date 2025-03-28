@@ -2,101 +2,105 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { faGithub, faLinkedin, faSkype } from "@fortawesome/free-brands-svg-icons";
+import { motion } from "framer-motion";
+
+const skills = [
+  { name: "TailwindCSS", icon: "fab fa-css3-alt", color: "#38bdf8" },
+  { name: "React", icon: "fab fa-react", color: "#61dafb" },
+  { name: "JavaScript", icon: "fab fa-js-square", color: "#f7df1e" },
+  { name: "PHP", icon: "fab fa-php", color: "#777bb3" },
+  { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952b3" },
+  { name: "MySQL", icon: "fas fa-database", color: "#00618a" },
+  { name: "Postgres", icon: "fas fa-server", color: "#336791" },
+  { name: "NodeJS", icon: "fab fa-node-js", color: "#68a063" },
+  { name: "Laravel", icon: "fab fa-laravel", color: "#ff2d20" },
+  { name: "WordPress", icon: "fab fa-wordpress", color: "#21759b" },
+];
 
 const Profile = () => {
-  const skillsLeft = [
-  { name: "TailwindCSS", icon: <i className="fab fa-css3-alt"></i> }, 
-  { name: "React", icon: <i className="fab fa-react"></i> }, 
-  { name: "JavaScript", icon: <i className="fab fa-js-square"></i> }, 
-  { name: "PHP", icon: <i className="fab fa-php"></i> }, 
-  { name: "Bootstrap", icon: <i className="fab fa-bootstrap"></i> }, 
-];
-
-const skillsRight = [
-  { name: "MySQL", icon: <i className="fas fa-database"></i> }, 
-  { name: "Postgres", icon: <i className="fas fa-server"></i> }, 
-  { name: "NodeJS", icon: <i className="fab fa-node-js"></i> }, 
-  { name: "Laravel", icon: <i className="fab fa-laravel"></i> }, 
-  { name: "WordPress", icon: <i className="fab fa-wordpress"></i> }, 
-];
-
-
   return (
-    
-    <div className=" bg-gray-100 flex items-center justify-center mt-30 ">
-      
-      <div className="max-w-6xl p-20 flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-10">
-        
-        {/* Text Content */}
-        <div className="text-center lg:text-left lg:w-1/2">
-          <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
-            DERRICK KOFI TABIRI
-          </h1>
+    <div className="min-h-screen w-full flex items-center justify-center bg-white p-6">
+      <div className="w-full max-w-4xl bg-white shadow-lg rounded-2xl overflow-hidden">
+        <div className="p-8 md:p-12 flex flex-col items-center text-center bg-whitesmoke">
+          {/* Profile Image */}
+          <motion.div 
+            className="mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.img
+              src="assets/boy.png"
+              alt="Profile"
+              className="w-48 h-48 rounded-full border-4 border-gray-300 shadow-lg object-cover"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            />
+          </motion.div>
 
-          <p className="text-xl text-gray-600 mb-6">Fullstack Developer</p>
+          {/* Name and Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
+              DERRICK KOFI TABIRI
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Fullstack Developer
+            </p>
+          </motion.div>
 
           {/* Skills */}
-          <div className="flex justify-center lg:justify-start gap-6">
-            <div className="space-y-4">
-              {skillsLeft.map((skill, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-4 px-5 py-3 border border-gray-300 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow duration-300"
-                >
-                  <span className="text-blue-500">{skill.icon}</span>
-                  <p className="text-gray-800">{skill.name}</p>
-                </div>
-              ))}
-            </div>
-            <div className="space-y-4">
-              {skillsRight.map((skill, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-4 px-5 py-3 border border-gray-300 rounded-lg shadow-sm bg-white hover:shadow-md transition-shadow duration-300"
-                >
-                  <span className="text-blue-500">{skill.icon}</span>
-                  <p className="text-gray-800">{skill.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full mb-8"
+          >
+            {skills.map((skill, index) => (
+              <motion.div
+                key={index}
+                className="bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 ease-in-out"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: '0 10px 15px rgba(0,0,0,0.1)'
+                }}
+              >
+                <i 
+                  className={`${skill.icon} text-4xl mb-3 block`}
+                  style={{ color: skill.color }}
+                ></i>
+                <span className="text-gray-800 text-sm font-medium">{skill.name}</span>
+              </motion.div>
+            ))}
+          </motion.div>
 
-        {/* Profile Image */}
-        <div className="w-full lg:w-1/3 flex flex-col items-center">
-          <img
-            src="assets/boy.png"
-            alt="Profile"
-            className="w-150 h-110"
-          />
           {/* Social Links */}
-          <div className="mt-8 flex justify-center space-x-6">
-  <a
-    href="https://github.com"
-    className="text-gray-500 hover:text-gray-800 transition"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FontAwesomeIcon icon={faGithub} className="text-2xl" />
-  </a>
-  <a
-    href="https://linkedin.com"
-    className="text-gray-500 hover:text-gray-800 transition"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FontAwesomeIcon icon={faLinkedin} className="text-2xl" />
-  </a>
-  <a
-    href="https://skype.com"
-    className="text-gray-500 hover:text-gray-800 transition"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FontAwesomeIcon icon={faSkype} className="text-2xl" />
-  </a>
-</div>
-
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="flex space-x-6"
+          >
+            {[
+              { icon: faGithub, link: "https://github.com", color: "#333" },
+              { icon: faLinkedin, link: "https://linkedin.com", color: "#0077B5" },
+              { icon: faSkype, link: "https://skype.com", color: "#00AFF0" }
+            ].map((social, index) => (
+              <a 
+                key={index}
+                href={social.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="transform transition-all duration-300 hover:scale-110"
+                style={{ color: social.color }}
+              >
+                <FontAwesomeIcon icon={social.icon} className="text-4xl" />
+              </a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </div>

@@ -9,56 +9,72 @@ const PortfolioWorks = () => {
   const works = [
     {
       title: "BUSINESS WEB",
-      image: "/projects/busweb.png", 
+      image: "/projects/busweb.png",
+      description: "A comprehensive business website solution"
     },
     {
       title: "Online Disaster Reporting System",
-      image: "/projects/disaster.png", 
+      image: "/projects/disaster.png",
+      description: "Real-time disaster reporting and tracking platform"
     },
     {
       title: "Activity Tracker",
-      image: "/projects/activity.png", 
+      image: "/projects/activity.png",
+      description: "Personal activity and productivity monitoring app"
     },
     {
       title: "Student ChatBot",
-      image: "/projects/chatbot.png", 
+      image: "/projects/chatbot.png",
+      description: "AI-powered educational assistant for students"
     },
-    
   ];
 
   return (
-    <div className=" bg-gray-50 p-20">
+    <div className="container mx-auto px-4 py-12">
       {/* Header Section */}
-      <header className="text-center mb-12">
-        <h1 className="text-lg font-medium text-gray-600 uppercase">Portfolio</h1>
-        <h2 className="text-3xl font-bold text-gray-800 mt-2">Recent Works</h2>
-      </header>
+      <div className="text-center mb-10">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Portfolio</h2>
+        <p className="text-xl text-gray-600">Recent Works</p>
+      </div>
 
       {/* Swiper Section */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={20}
+        spaceBetween={30}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
         }}
-        className="w-full"
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        }}
+        className="portfolio-swiper"
       >
         {works.map((work, index) => (
           <SwiperSlide key={index}>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <img
-                src={work.image}
-                alt={work.title}
-                className="w-full h-full object-cover"
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
+              <img 
+                src={work.image} 
+                alt={work.title} 
+                className="w-full h-64 object-cover"
               />
-              <div className="p-4 text-center">
-                <h3 className="text-lg font-semibold">{work.title}</h3>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {work.title}
+                </h3>
+                <p className="text-gray-600">
+                  {work.description}
+                </p>
               </div>
             </div>
           </SwiperSlide>
