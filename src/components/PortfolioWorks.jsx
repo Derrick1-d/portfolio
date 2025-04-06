@@ -30,57 +30,61 @@ const PortfolioWorks = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      {/* Header Section */}
-      <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Portfolio</h2>
-        <p className="text-xl text-gray-600">Recent Works</p>
-      </div>
+      <div className="mx-auto px-4 py-12">
+        {/* Header Section */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white font-sans dark:font-mono mb-4">
+            Portfolio
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 font-sans dark:font-mono">
+            Recent Works
+          </p>
+        </div>
 
-      {/* Swiper Section */}
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={30}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        }}
-        className="portfolio-swiper"
-      >
-        {works.map((work, index) => (
-          <SwiperSlide key={index}>
-            <div className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
-              <img 
-                src={work.image} 
-                alt={work.title} 
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {work.title}
-                </h3>
-                <p className="text-gray-600">
-                  {work.description}
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+        {/* Swiper Section */}
+        <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            className="portfolio-swiper"
+        >
+          {works.map((work, index) => (
+              <SwiperSlide key={index}>
+                <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transform transition-transform hover:scale-105">
+                  <img
+                      src={work.image}
+                      alt={work.title}
+                      className="w-full h-64 object-cover"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white font-sans dark:font-mono mb-2">
+                      {work.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 font-sans dark:font-mono">
+                      {work.description}
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
   );
 };
 
