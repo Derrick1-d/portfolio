@@ -23,7 +23,7 @@ const Footer = ({ scrollToSection, refs }) => {
           <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-facebook"></i></a>
           <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-twitter"></i></a>
           <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-instagram"></i></a>
-          <a href="#" className="text-gray-400 hover:text-white"><i className="fab fa-linkedin"></i></a>
+          <a href="http://linkedin.com/in/derrick-tabiri-b71b051b9" className="text-gray-400 hover:text-white"><i className="fab fa-linkedin"></i></a>
         </div>
       </div>
     </footer>
