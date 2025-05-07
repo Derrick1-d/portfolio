@@ -7,7 +7,7 @@ const Experience = ({darkMode}) => {
 
   const experiences = [
     {
-      logo: "/assets/aiv.png",
+      logo: "/assets/ttu logo.png",
       company: "TAKORADI TECHNICAL UNIVERSITY",
       role: "Fullstack Developer",
       duration: "2024 - Present"

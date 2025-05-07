@@ -27,6 +27,11 @@ const PortfolioWorks = () => {
       image: "/projects/chatbot.png",
       description: "AI-powered educational assistant for students"
     },
+      {
+          title: "Relationship and Tips Game",
+          image: "/projects/relationship_tips.png",
+          description: "AI-powered educational assistant for students"
+      },
   ];
 
   return (
