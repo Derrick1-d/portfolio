@@ -12,25 +12,43 @@ const PortfolioWorks = () => {
       image: "/projects/busweb.png",
       description: "A comprehensive business website solution"
     },
+    
     {
-      title: "Online Disaster Reporting System",
-      image: "/projects/disaster.png",
-      description: "Real-time disaster reporting and tracking platform"
-    },
+          title: "Student Elearning Platform",
+          image: "/projects/student_elearning.png",
+          description: "An elearning for student and lecturers administrator dashboard"
+      },
     {
       title: "Activity Tracker",
       image: "/projects/activity.png",
       description: "Personal activity and productivity monitoring app"
+    },
+    
+      
+      {
+          title: "Online Medication Manage",
+          image: "/projects/medication_manage.png",
+          description: "An online medication monitoring for sick people administrator dashboard"
+      },
+      {
+          title: "Online Medication Purchase",
+          image: "/projects/online-medication.png",
+          description: "An online medication for web application for purchasing drugs"
+      },
+      {
+      title: "Online Disaster Reporting System",
+      image: "/projects/disaster.png",
+      description: "Real-time disaster reporting and tracking platform"
     },
     {
       title: "Student ChatBot",
       image: "/projects/chatbot.png",
       description: "AI-powered educational assistant for students"
     },
-      {
+    {
           title: "Relationship and Tips Game",
           image: "/projects/relationship_tips.png",
-          description: "AI-powered educational assistant for students"
+          description: "Relationship tips game for people"
       },
   ];
 
@@ -38,7 +56,7 @@ const PortfolioWorks = () => {
       <div className="mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-white font-sans dark:font-mono mb-4">
+            <h2 className="text-base font-semibold uppercase tracking-wide text-blue-600">
             Portfolio
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 font-sans dark:font-mono">
