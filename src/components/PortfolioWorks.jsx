@@ -7,6 +7,18 @@ import "swiper/css/pagination";
 
 const PortfolioWorks = () => {
   const works = [
+
+    {
+      title: "MARQETISE BLOG",
+      image: "/projects/maqetise.png",
+      description: "A marketing website solution CMS"
+    },
+    {
+      title: "TENNIS BLOG",
+      image: "/projects/tennis.png",
+      description: "A Tennis website blog CMS"
+    },
+
     {
       title: "BUSINESS WEB",
       image: "/projects/busweb.png",
