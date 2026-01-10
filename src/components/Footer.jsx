@@ -11,7 +11,7 @@ const Footer = ({ scrollToSection, refs }) => {
 
         <nav className="mt-4 md:mt-0">
           <ul className="flex space-x-4">
-            <li><button onClick={() => scrollToSection(refs.heroRef)} className="text-gray-400 hover:text-white">Hero</button></li>
+            <li><button onClick={() => scrollToSection(refs.heroRef)} className="text-gray-400 hover:text-white">Home</button></li>
             <li><button onClick={() => scrollToSection(refs.aboutRef)} className="text-gray-400 hover:text-white">About</button></li>
             <li><button onClick={() => scrollToSection(refs.portfolioRef)} className="text-gray-400 hover:text-white">Portfolio</button></li>
             <li><button onClick={() => scrollToSection(refs.experienceRef)} className="text-gray-400 hover:text-white">Experience</button></li>

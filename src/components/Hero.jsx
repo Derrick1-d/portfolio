@@ -8,6 +8,8 @@ const skills = [
   { name: "TailwindCSS", icon: "fab fa-css3-alt", color: "#38bdf8" },
   { name: "React", icon: "fab fa-react", color: "#61dafb" },
   { name: "JavaScript", icon: "fab fa-js-square", color: "#f7df1e" },
+  { name: "TypeScript", icon: "fas fa-file-code", color: "#3178C6" },
+
   { name: "PHP", icon: "fab fa-php", color: "#777bb3" },
   { name: "Bootstrap", icon: "fab fa-bootstrap", color: "#7952b3" },
   { name: "MySQL", icon: "fas fa-database", color: "#00618a" },
@@ -15,6 +17,14 @@ const skills = [
   { name: "NodeJS", icon: "fab fa-node-js", color: "#68a063" },
   { name: "Laravel", icon: "fab fa-laravel", color: "#ff2d20" },
   { name: "WordPress", icon: "fab fa-wordpress", color: "#21759b" },
+
+  { name: "Photoshop", icon: "fas fa-image", color: "#31A8FF" },
+  { name: "CorelDRAW", icon: "fas fa-bezier-curve", color: "#4CAF50" },
+  { name: "Illustrator", icon: "fas fa-pen-nib", color: "#FF9A00" },
+  { name: "InDesign", icon: "fas fa-file-alt", color: "#FF3366" },
+  { name: "Adobe XD", icon: "fas fa-project-diagram", color: "#FF61F6" },
+  { name: "Figma", icon: "fab fa-figma", color: "#F24E1E" },
+  { name: "Canva", icon: "fas fa-paint-brush", color: "#00C4CC" },
 ];
 
 const Profile = ({ darkMode }) => {
